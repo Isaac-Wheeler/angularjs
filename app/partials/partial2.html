@@ -3,3 +3,18 @@
 	query and the odering uses which fields of the data to order by, first or last name.
 </p>
 <br />
+
+<input type="text" ng-model="newTodoText" ng-model-instant ><button ng-click="addNewTodo()"><i class="icon-plus"></i>add one</button>
+<br />
+
+Total todos: {{returnTotalTodos()}} 
+<ul class="unstyled">
+	<li ng-repeat="todo in todos">
+		<input type="checkbox" ng-model="todo.done" ng-click="handleTodoCheck()">
+		<span class="done-{{todo.done}}">{{todo.todoItem}}</span>
+	</li>
+</ul>
+
+<div>
+	<button ng-click="clearFinishedTodos()">Clear Finished Todos</button>
+</div>
