@@ -60,4 +60,43 @@ angular.module('myApp.controllers', []).
   			});
   			$scope.todos = newTodos;
   		}
-  	}]);
+ 
+  	}])
+    .controller('MyCtrl3', ['$scope', function ($scope) {
+		
+        $scope.math
+        
+        $scope.equals = function () {
+        return $scope.math
+        }
+
+  		$scope.domath = function () {
+                if ($scope.MathText.length) {
+  				$scope.math = $scope.MathText
+                $scope.math = $scope.math.trim()
+                if ($scope.math.indexOf("+") != -1){
+                $scope.math = $scope.math.split("+")
+                $scope.math =($scope.math[0] + "+" + $scope.math[1] + "=" + (parseInt($scope.math[0]) + parseInt($scope.math[1])) );
+                } else if ($scope.math.indexOf("-") != -1) {
+                $scope.math = $scope.math.split("-")
+                $scope.math =($scope.math[0] + "-" + $scope.math[1] + "=" + (parseInt($scope.math[0]) - parseInt($scope.math[1])) );
+                } else if ($scope.math.indexOf("*") != -1) {
+                $scope.math = $scope.math.split("*")
+                $scope.math =($scope.math[0] + "*" + $scope.math[1] + "=" + (parseInt($scope.math[0]) * parseInt($scope.math[1])) );
+                } else if ($scope.math.indexOf("/") != -1) {
+                $scope.math = $scope.math.split("/")
+                $scope.math =($scope.math[0] + "/" + $scope.math[1] + "=" + (parseInt($scope.math[0]) / parseInt($scope.math[1])) );
+                }
+                
+                
+                
+  				}
+
+  				// reset the input box
+  				$scope.MathText = ''
+  			}
+  		}
+
+ 
+  	]);
+    
