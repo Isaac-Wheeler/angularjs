@@ -1,0 +1,23 @@
+<h1>Partial View #4 Test</h1>
+<p>This example is showing how to iterate over data using a filter and ordering. The filter will use the built-in
+	query and the ordering uses which fields of the data to order by, first or last name.
+</p>
+<br />
+
+name: <input type="text" ng-model="newcontactname" ng-model-instant ><br />
+Phone number: <input type="text" ng-model="newcontactphone" ng-model-instant ><br />
+
+<button ng-click="addNewContact()"><i class="icon-plus"></i>Add New Contact</button>
+<br />
+
+Total Contacts: {{returnTotalContacts()}} 
+<ul class="unstyled">
+	<li ng-repeat="contact in contacts">
+		<input type="checkbox" ng-model="contact.keep" ng-click="handlecontactCheck()">
+		<span class="keep-{{contact.keep}}">{{contact.name}} {{contact.phone}}</span>
+	</li>
+</ul>
+
+<div>
+	<button ng-click="deleteSelectedContacts()">Delete selected Contacts</button>
+</div>

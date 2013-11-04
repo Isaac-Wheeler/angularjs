@@ -4,60 +4,69 @@
 
 angular.module('myApp.controllers', []).
   	controller('MyCtrl1', ['$scope', function($scope) {
-  		$scope.names = [
+  		$scope.contacts = [
   			{
   				'first': 'Tim',
-  				'last': 'Mote'
+  				'last': 'Mote',
+				'number': '18002672001'
   			},
   			{
   				'first': 'Dan',
-  				'last': 'Bean'
+  				'last': 'Bean',
+				'number': '9192678362'
   			},
   			{
   				'first': 'Dennis',
-  				'last': 'Mote'
+  				'last': 'Mote',
+				'number': '2847590275'
   			}
   		];
 
   		// default oder
   		$scope.orderProp = 'first';
   	}])
-  	.controller('MyCtrl2', ['$scope', function ($scope) {
-  		$scope.todos = [
+  	.controller('MyCtrl4', ['$scope', function ($scope) {
+  		$scope.contacts = [
   			{
-  				'todoItem': 'finish this test app',
-  				'done': false
-  			},
-  			{
-  				'todoItem': 'come up with more todos',
-  				'done': false
-  			}
+  				'name': 'joe',
+				'phone' :18002672001,
+  				'keep': true,
+  			},{
+				'name': 'isaac',
+				'phone' :9194040444,
+  				'keep': true,
+				}
+  			
   		];
+	
 
-  		$scope.returnTotalTodos = function () {
-  			return $scope.todos.length;
+  			var newcontacts = [];
+  		$scope.deleteSelectedContacts = function () {
+			var newList = [];
+  			$scope.contacts.forEach(function (contact) {
+				if (contact.keep = false){
+  					newList.push(contact);
+  				}
+			});
+			$scope.contacts = newList;
+		};
+
+  		$scope.returnTotalContacts = function () {
+  			return $scope.contacts.length;
   		}
 
-  		$scope.addNewTodo = function () {
-  			if ($scope.newTodoText.length) {
-  				// Add new todo to list
-  				$scope.todos.push({
-  					'todoItem': $scope.newTodoText,
-  					'done': false
+  		$scope.addNewContact = function () {
+  			if ($scope.newcontactname.length) {
+  				// Add new contact to list
+  				$scope.contacts.push({
+  					'name': $scope.newcontactname,
+					'phone': $scope.newcontactphone,
+  					'keep': true
   				});
 
-  				// reset the input box
-  				$scope.newTodoText = '';
-  			}
-  		}
 
-  		$scope.clearFinishedTodos = function () {
-  			var newTodos = [];
-  			$scope.todos.forEach(function (todo) {
-  				if (!todo.done) {
-  					newTodos.push(todo);
-  				}
-  			});
-  			$scope.todos = newTodos;
+  				// reset the input box
+  				$scope.newcontactText = '';
+  			}
   		}
   	}]);
