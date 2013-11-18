@@ -107,21 +107,20 @@ angular.module('myApp.controllers', []).
                           {
                                   'name': 'joe',
                                 'phone' :18002672001,
-                                  'keep': true,
+                                  'delete': false,
                           },{
                                 'name': 'isaac',
                                 'phone' :9194040444,
-                                  'keep': true,
+                                  'delete': false,
                                 }
                           
                   ];
         
 
-                          var newcontacts = [];
                   $scope.deleteSelectedContacts = function () {
                         var newList = [];
                           $scope.contacts.forEach(function (contact) {
-                                if (contact.keep = false){
+                                if (contact.delete===false){
                                           newList.push(contact);
                                   }
                         });
@@ -138,24 +137,16 @@ angular.module('myApp.controllers', []).
                                   $scope.contacts.push({
                                           'name': $scope.newcontactname,
                                         'phone': $scope.newcontactphone,
-                                          'keep': true
+                                          'delete': false
                                   });
 
 
                                   // reset the input box
-                                  $scope.newcontactText = '';
+                                  $scope.newcontactname = '';
+                                  $scope.newcontactphone = '';
                           }
                   }
 
-                  $scope.clearFinishedTodos = function () {
-                          var newTodos = [];
-                          $scope.todos.forEach(function (todo) {
-                                  if (!todo.done) {
-                                          newTodos.push(todo);
-                                  }
-                          });
-                          $scope.todos = newTodos;
-                  }
  
           }]);
 
