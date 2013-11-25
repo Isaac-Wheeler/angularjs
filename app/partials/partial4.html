@@ -3,7 +3,9 @@
 	query and the ordering uses which fields of the data to order by, first or last name.
 </p>
 <br />
-
+			Search: <input ng-model="query"> <br />
+            input new contact ;P <br />
+           
 name: <input type="text" ng-model="newcontactname" ng-model-instant ><br />
 Phone number: <input type="text" ng-model="newcontactphone" ng-model-instant ><br />
 
@@ -12,9 +14,10 @@ Phone number: <input type="text" ng-model="newcontactphone" ng-model-instant ><b
 
 Total Contacts: {{returnTotalContacts()}} 
 <ul class="unstyled">
-	<li ng-repeat="contact in contacts">
-		<input type="checkbox" ng-model="contact.keep" ng-click="handlecontactCheck()">
-		<span class="keep-{{contact.keep}}">{{contact.name}} {{contact.phone}}</span>
+	<li ng-repeat="contact in contacts | filter:query | orderBy:orderProp">
+
+    <input type="checkbox" ng-model="contact.delete" ng-click="handlecontactCheck()">
+		<span class="delete-{{contact.delete}}">{{contact.name}} {{contact.phone}}</span>
 	</li>
 </ul>
 
